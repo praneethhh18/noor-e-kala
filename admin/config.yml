@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: USERNAME/REPO        # ← I'll set this to your real GitHub repo
+  repo: praneethhh18/noor-e-kala
   branch: main
 
 media_folder: "img"          # uploaded photos are saved here
