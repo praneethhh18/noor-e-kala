@@ -2,220 +2,202 @@
   "products": [
     {
       "name": "Green & Gold Geode Clock",
-      "price": 2799,
+      "price": 3000,
       "cat": "resin",
-      "img": "img/clock-green.jpg",
-      "images": [],
+      "img": "/img/clock-green.jpg",
       "desc": "A statement geode wall clock in emerald, cream and gold resin. Every swirl is poured by hand, so no two are ever alike.",
       "featured": true,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Black & Silver Geode Clock",
       "price": 2499,
       "cat": "resin",
-      "img": "img/clock-black.jpg",
-      "images": [],
+      "img": "/img/clock-black.jpg",
       "desc": "A bold black, white and silver geode resin wall clock that turns any wall into a piece of art.",
       "featured": true,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "\"Home Sweet Home\" Key Holder",
       "price": 899,
       "cat": "resin",
-      "img": "img/key-holder.jpg",
-      "images": [],
+      "img": "/img/key-holder.jpg",
       "desc": "A pearly resin key holder with gold accents and five sturdy hooks. Lovely by the front door.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Personalised Name Tray",
       "price": 699,
       "cat": "resin",
-      "img": "img/name-tray.jpg",
-      "images": [],
+      "img": "/img/name-tray.jpg",
       "desc": "A trinket tray set with real dried flowers, gold flake and your name in gold.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Floral Coaster Set",
       "price": 599,
+      "mrp": 699,
       "cat": "resin",
-      "img": "img/coasters.jpg",
-      "images": [],
+      "img": "/img/coasters.jpg",
       "desc": "A set of resin coasters with pressed flowers and gold flake. Pretty and practical.",
       "featured": false,
       "sold_out": false,
-      "reviews": [],
-      "mrp": 699
+      "enquiry": false
     },
     {
       "name": "Couple Name Letters",
       "price": 799,
       "cat": "resin",
-      "img": "img/name-letters.jpg",
-      "images": [],
+      "img": "/img/name-letters.jpg",
       "desc": "Your initials cast in resin with real petals. A sweet keepsake for couples.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Preserved Flower Frame",
       "price": 999,
       "cat": "resin",
-      "img": "img/preserved-frame.jpg",
-      "images": [],
+      "img": "/img/preserved-frame.jpg",
       "desc": "Your special flowers preserved in resin with a heartfelt message and date.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Resin Photo Frame",
       "price": 699,
       "cat": "resin",
-      "img": "img/photo-frame.jpg",
-      "images": [],
+      "img": "/img/photo-frame.jpg",
       "desc": "A resin photo frame with dried florals, holding your favourite memory.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Family Photo Frame",
       "price": 749,
       "cat": "resin",
-      "img": "img/family-frame.jpg",
-      "images": [],
+      "img": "/img/family-frame.jpg",
       "desc": "A family photo set in resin with flowers and gold, made to treasure.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Resin Heart Earrings",
       "price": 349,
+      "mrp": 449,
       "cat": "jewel",
-      "img": "img/resin-earrings.jpg",
-      "images": [],
+      "img": "/img/resin-earrings.jpg",
       "desc": "Heart-shaped resin earrings with rose petals and gold flake, on gold hooks.",
       "featured": true,
       "sold_out": false,
-      "reviews": [],
-      "mrp": 449
+      "enquiry": false
     },
     {
       "name": "Floral Jewellery Set",
       "price": 599,
       "cat": "jewel",
-      "img": "img/resin-jewel-set.jpg",
+      "img": "/img/resin-jewel-set.jpg",
       "images": [
-        "img/pendant.jpg",
-        "img/resin-earrings.jpg"
+        "/img/pendant.jpg",
+        "/img/resin-earrings.jpg"
       ],
       "desc": "A matching resin pendant and stud earrings with real flowers set in gold.",
       "featured": true,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Fingerprint Memory Pendant",
       "price": 899,
       "cat": "jewel",
-      "img": "img/fingerprint-pendant.jpg",
-      "images": [],
+      "img": "/img/fingerprint-pendant.jpg",
       "desc": "A heart pendant carrying a real fingerprint. A deeply personal keepsake.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Floral Resin Pendant",
       "price": 399,
       "cat": "jewel",
-      "img": "img/pendant.jpg",
-      "images": [],
+      "img": "/img/pendant.jpg",
       "desc": "A dainty resin pendant with a pressed flower, on a delicate chain.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Preserved Flower Jhumkas",
       "price": 449,
       "cat": "jewel",
-      "img": "img/jhumka-maroon.jpg",
-      "images": [],
+      "img": "/img/jhumka-maroon.jpg",
       "desc": "Traditional jhumkas with preserved flowers set in resin and gold beads.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Daisy Resin Jhumkas",
       "price": 449,
       "cat": "jewel",
-      "img": "img/jhumka-red.jpg",
-      "images": [],
+      "img": "/img/jhumka-red.jpg",
       "desc": "Statement jhumkas with daisies preserved in resin. Ethnic and eye-catching.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Wedding Calendar Keepsake",
       "price": 1299,
       "cat": "gift",
-      "img": "img/wedding-keepsake.jpg",
-      "images": [],
+      "img": "/img/wedding-keepsake.jpg",
       "desc": "Your wedding date and names in resin with dried flowers, on a little wooden easel.",
       "featured": true,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Photo Memory Keychain",
       "price": 299,
+      "mrp": 399,
       "cat": "gift",
-      "img": "img/photo-keychain.jpg",
-      "images": [],
+      "img": "/img/photo-keychain.jpg",
       "desc": "A resin keychain holding mini polaroids and dried flowers.",
       "featured": false,
       "sold_out": false,
-      "reviews": [],
-      "mrp": 399
+      "enquiry": false
     },
     {
       "name": "Mini Gift Hamper",
       "price": 899,
       "cat": "gift",
-      "img": "img/coll-gift.jpg",
-      "images": [],
+      "img": "/img/coll-gift.jpg",
       "desc": "A curated little hamper of handmade goodies, wrapped and ready to gift.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Varmala Preservation Frame",
       "price": 2499,
       "cat": "gift",
-      "img": "img/varmala-frame.jpg",
+      "img": "/img/varmala-frame.jpg",
       "images": [
-        "img/varmala-box.jpg"
+        "/img/varmala-box.jpg"
       ],
       "desc": "Preserve your wedding varmala forever in a framed resin keepsake with your photo and date.",
       "featured": true,
       "sold_out": false,
-      "reviews": [],
       "enquiry": true,
       "note": "💌 Made to order. Message me first — you'll post your varmala / flowers to me, then I'll preserve them into your keepsake by hand."
     },
@@ -223,12 +205,10 @@
       "name": "Varmala Preservation Keepsake",
       "price": 2299,
       "cat": "gift",
-      "img": "img/varmala-box.jpg",
-      "images": [],
+      "img": "/img/varmala-box.jpg",
       "desc": "Your wedding varmala and photo preserved beautifully in a resin keepsake.",
       "featured": false,
       "sold_out": false,
-      "reviews": [],
       "enquiry": true,
       "note": "💌 Made to order. Message me first — you'll post your varmala / flowers to me, then I'll preserve them into your keepsake by hand."
     },
@@ -236,89 +216,81 @@
       "name": "Resin Feather Bookmark",
       "price": 199,
       "cat": "gift",
-      "img": "img/bookmark.jpg",
-      "images": [],
+      "img": "/img/bookmark.jpg",
       "desc": "A translucent resin feather bookmark. A lovely little gift for readers.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Tassel Photo Keychain",
       "price": 299,
       "cat": "gift",
-      "img": "img/keychain-tassel.jpg",
-      "images": [],
+      "img": "/img/keychain-tassel.jpg",
       "desc": "A resin photo keychain finished with a soft tassel and charm.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Letter Keychain",
       "price": 199,
       "cat": "gift",
-      "img": "img/keychain-letter.jpg",
-      "images": [],
+      "img": "/img/keychain-letter.jpg",
       "desc": "Your initial in colourful resin. A cute bag charm or gift.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Crochet Tulip Bouquet",
       "price": 499,
       "cat": "crochet",
-      "img": "img/tulip-bouquet.jpg",
-      "images": [],
+      "img": "/img/tulip-bouquet.jpg",
       "desc": "A hand-crocheted tulip bouquet that blooms forever.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Amigurumi Plushie",
       "price": 399,
       "cat": "crochet",
-      "img": "img/gal-1.jpg",
-      "images": [],
+      "img": "/img/gal-1.jpg",
       "desc": "A cuddly hand-crocheted plushie, made to order in your colours.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Crochet Keychain",
       "price": 149,
       "cat": "crochet",
-      "img": "img/coll-crochet.jpg",
-      "images": [],
+      "img": "/img/coll-crochet.jpg",
       "desc": "A little hand-crocheted keychain charm.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Fresh Flower Bouquet",
       "price": 599,
       "cat": "bouquet",
-      "img": "img/gal-4.jpg",
-      "images": [],
+      "img": "/img/gal-4.jpg",
       "desc": "A hand-tied bouquet of fresh seasonal blooms.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     },
     {
       "name": "Mixed Crochet Bouquet",
       "price": 749,
       "cat": "bouquet",
-      "img": "img/mixed-bouquet.jpg",
-      "images": [],
+      "img": "/img/mixed-bouquet.jpg",
       "desc": "A mixed bouquet of crochet flowers, forever fresh.",
       "featured": false,
       "sold_out": false,
-      "reviews": []
+      "enquiry": false
     }
   ]
 }
