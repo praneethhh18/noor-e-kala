@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shop — Noor e Kala</title>
+<meta name="description" content="Shop handcrafted resin art, jewellery, crochet, bouquets & gifts from Noor e Kala. Add to cart and order on WhatsApp." />
+<meta http-equiv="Cache-Control" content="no-store" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Noor e Kala" />
+<meta property="og:title" content="Noor e Kala — handmade with love" />
+<meta property="og:description" content="Handcrafted resin art, jewellery, keepsakes & gifts. Made by hand, loved by many." />
+<meta property="og:image" content="og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/jpeg" href="logo.jpg" />
+<script>document.documentElement.className += ' js';
+  setTimeout(function(){var els=document.querySelectorAll('.reveal');for(var i=0;i<els.length;i++)els[i].classList.add('in');},3500);</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Caveat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="cursor-glow" id="glow"></div>
+
+<div class="annbar" id="annbar" hidden><span id="annText"></span><button class="annclose" id="annClose" aria-label="Dismiss">✕</button></div>
+
+<!-- NAV -->
+<header id="hdr" class="scrolled">
+  <nav class="wrap">
+    <a href="index.html" class="brand"><img class="mark" src="logo.jpg" alt="Noor e Kala logo"> Noor e Kala</a>
+    <div class="nav-right">
+      <div class="nav-links" id="navlinks">
+        <a href="index.html#story">Our Story</a>
+        <a href="shop.html">Shop</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQ</a>
+        <a href="index.html#order" class="btn btn-primary">Order Now</a>
+      </div>
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">🛒<span class="cart-count" id="cartCount">0</span></button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- SHOP -->
+<section class="shop" id="shop" style="padding-top:150px">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="script">the full collection</span>
+      <h2>Shop Everything</h2>
+      <p>Add what you love to your cart, then send it straight to me on WhatsApp. I'll confirm availability and sort out payment with you personally.</p>
+    </div>
+
+    <div class="shop-tabs reveal" id="shopTabs"></div>
+
+    <div class="shop-grid" id="shopGrid"></div>
+
+    <p class="reveal" style="text-align:center;margin-top:2.4rem;color:var(--ink-soft);font-size:.95rem">Want something custom? <a href="index.html#order" style="color:var(--clay);font-weight:600;border-bottom:1.5px solid var(--clay)">Message me your idea</a> and I'll make it just for you.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="brand"><img class="mark" src="logo.jpg" alt="Noor e Kala logo"> Noor e Kala</div><p>Handcrafted crochet, resin art, fashion jewellery, bouquets &amp; gifts. Little pieces of art, made with heart.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="index.html#story">Our Story</a></li><li><a href="shop.html">Shop</a></li><li><a href="index.html#gallery">Gallery</a></li><li><a href="index.html#love">Love Notes</a></li></ul></div>
+      <div><h4>Say Hi</h4><ul><li><a href="https://instagram.com/noor.e.kala" target="_blank" rel="noopener"><svg class="ig-ico" viewBox="0 0 448 512" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg> @noor.e.kala</a></li><li><a href="https://wa.me/919238888808" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="index.html#order">Custom Orders</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© <span id="yr"></span> Noor e Kala. All things handmade.</span><span>Crafted with <span class="heart">♡</span> &amp; a lot of yarn.</span></div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/919238888808?text=Hi%20Noor%20e%20Kala!%20I'd%20love%20to%20order" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="wa-ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.4c-2.5 0-4.9-.7-7-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.4-2.2-2.1-4.7-2.1-7.3C2.9 8.8 8.8 2.9 16 2.9S29.1 8.8 29.1 16 23.2 28.8 16 28.8z"/><path d="M24.5 19.4c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.2-.5.3-.9.1-.4-.2-1.7-.6-3.3-2-1.2-1.1-2-2.4-2.3-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.1-.2.2-.4.3-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.5 1.4-1.5 3.4s1.5 4 1.7 4.3c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.8.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg></a>
+<button class="totop" id="totop" aria-label="Back to top">♥</button>
+
+<!-- sticky mobile action bar -->
+<div class="mobar">
+  <a href="index.html" class="m-shop">🏠 Home</a>
+  <a href="https://instagram.com/noor.e.kala" target="_blank" rel="noopener" class="m-ig"><svg class="ig-ico" viewBox="0 0 448 512" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg> Insta</a>
+  <a href="https://wa.me/919238888808?text=Hi%20Noor%20e%20Kala!%20I'd%20love%20to%20order" target="_blank" rel="noopener" class="m-wa"><svg class="wa-ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.4c-2.5 0-4.9-.7-7-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.4-2.2-2.1-4.7-2.1-7.3C2.9 8.8 8.8 2.9 16 2.9S29.1 8.8 29.1 16 23.2 28.8 16 28.8z"/><path d="M24.5 19.4c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.2-.5.3-.9.1-.4-.2-1.7-.6-3.3-2-1.2-1.1-2-2.4-2.3-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.1-.2.2-.4.3-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.5 1.4-1.5 3.4s1.5 4 1.7 4.3c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.8.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg> Order</a>
+</div>
+
+<!-- cart drawer -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Your order">
+  <div class="cart-head">
+    <h3>Your Order 🧺</h3>
+    <button class="cart-close" id="cartClose" aria-label="Close cart">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-total"><span>Total</span><b id="cartTotal">₹0</b></div>
+    <div class="cart-fields">
+      <div class="cf2"><input id="ci-name" type="text" placeholder="Your name *"><input id="ci-phone" type="tel" placeholder="Phone number *"></div>
+      <input id="ci-email" type="email" placeholder="Email (optional)">
+      <textarea id="ci-addr" placeholder="Delivery address (house, area, city, pincode)"></textarea>
+    </div>
+    <button type="button" class="cart-info-toggle" id="cartInfoBtn" aria-expanded="false">ⓘ How ordering works</button>
+    <div class="cart-info" id="cartInfo" hidden><ol><li>You send this order to me on WhatsApp.</li><li>I confirm availability &amp; the final price.</li><li>Pay easily via UPI, then I handcraft &amp; ship it. 💛</li></ol></div>
+    <p class="cart-note">No payment here. I'll confirm availability and share UPI/payment details after you send your order. 💛</p>
+    <a class="cart-send" id="cartSend" href="#" target="_blank" rel="noopener">
+      <svg class="wa-ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.4c-2.5 0-4.9-.7-7-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.4-2.2-2.1-4.7-2.1-7.3C2.9 8.8 8.8 2.9 16 2.9S29.1 8.8 29.1 16 23.2 28.8 16 28.8z"/><path d="M24.5 19.4c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.2-.5.3-.9.1-.4-.2-1.7-.6-3.3-2-1.2-1.1-2-2.4-2.3-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.1-.2.2-.4.3-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.5 1.4-1.5 3.4s1.5 4 1.7 4.3c.2.3 2.9 4.5 7.1 6.3 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.8.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+      Send my order on WhatsApp
+    </a>
+  </div>
+</aside>
+
+<script src="app.js"></script>
+</body>
+</html>

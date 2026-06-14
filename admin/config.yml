@@ -1,0 +1,72 @@
+backend:
+  name: github
+  repo: USERNAME/REPO        # ← I'll set this to your real GitHub repo
+  branch: main
+
+media_folder: "img"          # uploaded photos are saved here
+public_folder: "img"
+
+site_url: "/"
+display_url: "/"
+
+collections:
+  # ---------- Site settings: offer banner + categories ----------
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "site"
+        label: "Banner & Categories"
+        file: "data/site.json"
+        fields:
+          - label: "Offer banner"
+            name: "banner"
+            widget: "object"
+            fields:
+              - { label: "Show banner", name: "on", widget: "boolean", default: true }
+              - { label: "Offer text", name: "text", widget: "string" }
+              - { label: "Link (optional)", name: "link", widget: "string", required: false }
+          - label: "Categories"
+            name: "categories"
+            widget: "list"
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Key (lowercase, no spaces — e.g. candles)", name: "key", widget: "string" }
+              - { label: "Label (shown on the tab — e.g. Candles)", name: "label", widget: "string" }
+
+  # ---------- Products ----------
+  - name: "products"
+    label: "Products"
+    files:
+      - name: "products"
+        label: "All Products"
+        file: "data/products.json"
+        fields:
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.name}} — ₹{{fields.price}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Price (₹)", name: "price", widget: "number", value_type: "int" }
+              - { label: "Original price / MRP (optional — fill for a discount)", name: "mrp", widget: "number", value_type: "int", required: false }
+              - { label: "Category key (must match a category above)", name: "cat", widget: "string" }
+              - { label: "Main photo", name: "img", widget: "image" }
+              - label: "More photos (extra angles)"
+                name: "images"
+                widget: "list"
+                required: false
+                field: { label: "Photo", name: "image", widget: "image" }
+              - { label: "Description", name: "desc", widget: "text", required: false }
+              - { label: "Featured on home page", name: "featured", widget: "boolean", default: false }
+              - { label: "Sold out", name: "sold_out", widget: "boolean", default: false }
+              - { label: "Enquiry only (e.g. Varmala — no add-to-cart)", name: "enquiry", widget: "boolean", default: false, required: false }
+              - { label: "Enquiry note (shown for enquiry items)", name: "note", widget: "string", required: false }
+              - label: "Reviews"
+                name: "reviews"
+                widget: "list"
+                required: false
+                summary: "{{fields.name}} ({{fields.rating}}★)"
+                fields:
+                  - { label: "Customer name", name: "name", widget: "string" }
+                  - { label: "Rating (1-5)", name: "rating", widget: "number", value_type: "int", default: 5, min: 1, max: 5 }
+                  - { label: "Review text", name: "text", widget: "text" }

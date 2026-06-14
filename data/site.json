@@ -1,0 +1,14 @@
+{
+  "banner": {
+    "on": true,
+    "text": "🎁 Grand opening offer — message on WhatsApp for a sweet first-order discount 💛",
+    "link": ""
+  },
+  "categories": [
+    { "key": "resin",   "label": "Resin Art" },
+    { "key": "jewel",   "label": "Jewellery" },
+    { "key": "gift",    "label": "Gifts" },
+    { "key": "crochet", "label": "Crochet" },
+    { "key": "bouquet", "label": "Bouquets" }
+  ]
+}
