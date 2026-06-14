@@ -1,0 +1,57 @@
+media:
+  - name: images
+    label: Photos
+    input: img
+    output: /img
+
+content:
+  - name: products
+    label: Products
+    type: file
+    path: data/products.json
+    fields:
+      - name: products
+        label: Products
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Name, type: string }
+          - { name: price, label: "Price (₹)", type: number }
+          - { name: mrp, label: "Original price / MRP — fill only for a discount", type: number, required: false }
+          - { name: cat, label: "Category key (must match a category in Settings)", type: string }
+          - { name: img, label: "Main photo", type: image }
+          - { name: images, label: "More photos (extra angles)", type: image, list: true, required: false }
+          - { name: desc, label: Description, type: text, required: false }
+          - { name: featured, label: "Show on home page", type: boolean, default: false }
+          - { name: sold_out, label: "Sold out", type: boolean, default: false }
+          - { name: enquiry, label: "Enquiry only (e.g. Varmala — no add to cart)", type: boolean, default: false, required: false }
+          - { name: note, label: "Enquiry note", type: string, required: false }
+          - name: reviews
+            label: Reviews
+            type: object
+            list: true
+            required: false
+            fields:
+              - { name: name, label: Customer name, type: string }
+              - { name: rating, label: "Rating (1-5)", type: number, default: 5 }
+              - { name: text, label: Review text, type: text }
+
+  - name: settings
+    label: Site Settings
+    type: file
+    path: data/site.json
+    fields:
+      - name: banner
+        label: Offer Banner
+        type: object
+        fields:
+          - { name: on, label: "Show the banner", type: boolean, default: true }
+          - { name: text, label: "Offer text", type: string }
+          - { name: link, label: "Link (optional)", type: string, required: false }
+      - name: categories
+        label: Categories
+        type: object
+        list: true
+        fields:
+          - { name: key, label: "Key (lowercase, no spaces — e.g. candles)", type: string }
+          - { name: label, label: "Label (shown on the tab — e.g. Candles)", type: string }
