@@ -97,7 +97,7 @@ export function ProductCard({
         <span className="p-stock">{showStock ? `Only ${product.stock} left` : ''}</span>
         <div className="p-bottom">
           {product.enquiry ? (
-            <span className="p-price">from ₹{product.price}</span>
+            <span className="p-price">₹{product.price}+</span>
           ) : onSale ? (
             <span className="p-prices">
               <span className="p-price">₹{product.salePrice}</span>
@@ -124,7 +124,7 @@ export function ProductCard({
               rel="noopener"
               onClick={(event) => event.stopPropagation()}
             >
-              Enquire →
+              Enquire
             </a>
           ) : inCart > 0 ? (
             // Once it is in the cart the button becomes a stepper, so the card

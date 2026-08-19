@@ -339,7 +339,7 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:var(--s4)}
 /* was a negative-margin hack; it is just a row in the flow now */
 .product-result{text-align:center;color:var(--ink-soft);font-size:var(--t-sm);margin:0 0 var(--s6)}
 
-.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr));gap:var(--grid-gap);align-items:stretch}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(178px,100%),1fr));gap:var(--grid-gap);align-items:stretch}
 .product{background:#fff;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);cursor:pointer;
  display:flex;flex-direction:column;height:100%;
  transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
@@ -349,23 +349,23 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:var(--s4)}
 .product:hover .p-img img{transform:scale(1.08)}
 .product.sold .p-img img{filter:grayscale(.5) opacity(.75)}
 
-.p-body{padding:var(--s4) var(--s4) var(--s5);display:flex;flex-direction:column;gap:var(--s2);flex:1}
+.p-body{padding:var(--s3) var(--s3) var(--s4);display:flex;flex-direction:column;gap:var(--s1);flex:1}
 /* Two lines are reserved for every name, so the price rows of neighbouring
    cards sit on one line regardless of how long the titles are. This is what
    made the grid look ragged before. */
-.p-name{font-family:"Fraunces";font-size:var(--h4);font-weight:500;line-height:1.25;
+.p-name{font-family:"Fraunces";font-size:var(--t-md);font-weight:500;line-height:1.22;
  min-height:calc(2 * 1.25em);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .p-name a{transition:color .25s}
 .p-name a:hover{color:var(--clay)}
 /* Same idea for the stock line: the space is always there, so it never nudges
    one card taller than its neighbours. */
-.p-stock{display:block;color:var(--clay-deep);font-size:var(--t-xs);font-weight:700;min-height:1.1rem}
-.p-bottom{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:var(--s2);flex-wrap:wrap}
-.p-prices{display:flex;align-items:baseline;gap:.4em;flex-wrap:wrap}
-.p-price{font-family:"Fraunces";font-size:1.2rem;color:var(--plum)}
-.p-mrp{font-size:var(--t-base);color:var(--ink-soft);text-decoration:line-through}
-.p-add,.p-enqbtn{border:none;border-radius:var(--r-pill);padding:.55em 1.1em;font-family:inherit;font-weight:700;
- font-size:var(--t-sm);cursor:pointer;white-space:nowrap;transition:.25s;display:inline-flex;align-items:center}
+.p-stock{display:block;color:var(--clay-deep);font-size:var(--t-xs);font-weight:700;min-height:.95rem;line-height:.95rem}
+.p-bottom{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:var(--s2);flex-wrap:nowrap;min-height:31px}
+.p-prices{display:flex;align-items:baseline;gap:.35em;flex-wrap:nowrap;min-width:0}
+.p-price{font-family:"Fraunces";font-size:1.05rem;color:var(--plum);white-space:nowrap}
+.p-mrp{font-size:var(--t-sm);color:var(--ink-soft);text-decoration:line-through;white-space:nowrap}
+.p-add,.p-enqbtn{border:none;border-radius:var(--r-pill);padding:.5em .9em;font-family:inherit;font-weight:700;
+ font-size:var(--t-sm);cursor:pointer;white-space:nowrap;transition:.25s;display:inline-flex;align-items:center;flex:none}
 .p-add{background:var(--clay);color:#fff}
 .p-add:hover{background:var(--clay-deep);transform:translateY(-2px)}
 .p-add:active{transform:scale(.92)}
@@ -738,7 +738,7 @@ footer ul a:hover{color:var(--gold)}
    without a breakpoint for each case.
    ========================================================================== */
 .curated-cell,.shop-grid>.product{container-type:inline-size}
-@container (max-width:215px){
+@container (max-width:168px){
   .p-body{padding:var(--s3) var(--s3) var(--s4);gap:var(--s1)}
   .p-name{font-size:var(--t-base)}
   .p-price{font-size:var(--t-md)}
@@ -918,7 +918,7 @@ footer ul a:hover{color:var(--gold)}
 .deals-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem)}
 .deals-head p{color:var(--ink-soft);margin-top:var(--s2);max-width:52ch}
 /* A rail, not a grid: an offer should feel like something to scroll through. */
-.deals-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);gap:var(--grid-gap);
+.deals-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(190px,1fr);gap:var(--grid-gap);
  overflow-x:auto;padding-bottom:var(--s3);scroll-snap-type:x mandatory;overscroll-behavior-x:contain}
 .deals-rail::-webkit-scrollbar{height:6px}
 .deals-rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:var(--r-pill)}
