@@ -139,6 +139,16 @@ header.scrolled,header.hdr-solid{
   background:rgba(251,245,236,.95);backdrop-filter:blur(16px);
   box-shadow:0 6px 24px -16px rgba(94,42,59,.5);padding:var(--s3) 0;
 }
+/* A backdrop-filter makes the header the containing block for its fixed
+   children, which trapped the open mobile menu inside it. Drop the filter while
+   the menu is open so the menu is pinned to the screen again. */
+/* Also lift the whole header: the menu lives inside it, and a child cannot
+   paint above the announcement bar (z-index 130) from inside a parent stacking
+   context set to 100 — which left the menu's close button clipped. */
+header.menu-open{backdrop-filter:none;background:var(--cream);z-index:140}
+
+.nav-overlay{display:none;border:0;padding:0}
+.nav-close{display:none}
 nav{display:flex;align-items:center;justify-content:space-between;gap:var(--s4)}
 .brand{display:flex;align-items:center;gap:var(--s3);font-family:"Fraunces";font-size:1.4rem;flex:none}
 .brand .mark{width:46px;height:46px;border-radius:13px;object-fit:cover;box-shadow:0 8px 18px -10px rgba(0,0,0,.45);flex:none}
@@ -648,11 +658,22 @@ footer ul a:hover{color:var(--gold)}
     flex-direction:column;align-items:flex-start;justify-content:center;gap:var(--s6);
     background:var(--cream);padding:var(--s9) var(--s7);
     box-shadow:-20px 0 60px -30px rgba(94,42,59,.6);
-    transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.8,.2,1);z-index:100;
+    transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.8,.2,1);
+    /* Above the announcement bar (130), which was covering the close button. */
+    z-index:140;
   }
   .nav-links.open{transform:none}
   .nav-links a{font-size:var(--t-lg)}
   .burger{display:flex}
+  /* Dim the page behind the menu and let a tap anywhere outside close it. */
+  .nav-overlay{display:block;position:fixed;inset:0;z-index:139;
+   background:rgba(40,28,24,.45);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;cursor:pointer}
+  .nav-overlay.open{opacity:1;visibility:visible}
+  .nav-close{display:grid;place-items:center;position:absolute;top:var(--s6);right:var(--s6);
+   width:38px;height:38px;border-radius:50%;border:none;cursor:pointer;
+   background:var(--cream-2);color:var(--ink);font-size:1rem;z-index:1}
+  /* Hide the burger while open so there is a single, obvious way to close. */
+  header.menu-open .burger{visibility:hidden}
   .t-grid,.val-grid,.steps,.reels-grid,.foot-grid{grid-template-columns:1fr}
   .coll-grid{grid-template-columns:repeat(2,1fr)}
   .card,.card.span3{grid-column:span 1}
