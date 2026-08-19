@@ -26,5 +26,8 @@ export function tooManyRequests(key: string, max: number, windowMs: number) {
  * form-fillers complete every input they find.
  */
 export function trippedHoneypot(body: Record<string, unknown>) {
-  return Boolean(String(body.website ?? '').trim());
+  // Checks both names: `website` is what the cart still sends, `nek-website` is
+  // the form field, renamed so browser autofill does not recognise it and fill
+  // a real customer's details into the trap.
+  return Boolean(String(body.website ?? '').trim() || String(body['nek-website'] ?? '').trim());
 }
