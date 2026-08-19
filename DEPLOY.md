@@ -1,5 +1,14 @@
 # Putting Noor e Kala online — free
 
+## The address to use
+
+**https://noor-e-kala.vercel.app**
+
+Bookmark that one. Every deploy also mints a throwaway URL like
+`noor-e-kala-7tecbp2hb-…vercel.app` which is frozen at that build forever —
+useful for checking an old version, useless for looking at the current site.
+Share and open the short address above; it always points at the newest deploy.
+
 The site runs on **Vercel** (the web app) plus **Turso** (the database) plus
 **Vercel Blob** (uploaded product photos). All three have free tiers that are
 comfortably more than a shop this size needs.
