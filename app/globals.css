@@ -620,7 +620,11 @@ footer ul a:hover{color:var(--gold)}
   .curated-grid{grid-template-columns:repeat(2,1fr)}
   .coll-grid{grid-template-columns:repeat(4,1fr)}
   .card,.card.span3{grid-column:span 2}
-  .pmodal-box{grid-template-columns:1fr;gap:var(--s5);padding:var(--s6)}
+  .pmodal-box{grid-template-columns:1fr;gap:var(--s4);padding:var(--s5)}
+  /* Cap the photo against screen height, not just card width. A 1:1 image on a
+     short window filled 69% of the popup and pushed "Add to cart" off-screen. */
+  .pmodal-stage{max-height:38vh}
+  .pmodal-thumb{width:48px;height:48px}
   .admin-order-card{grid-template-columns:1fr;gap:var(--s4)}
   .studio{grid-template-columns:1fr}
   .studio-side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;border-right:none;border-bottom:1px solid rgba(59,44,38,.1)}
