@@ -1,6 +1,13 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  images: {
+    // Uploaded photos live on Vercel Blob, an external host. next/image refuses
+    // to optimise a domain that is not listed here, so the main product image
+    // rendered broken while the raw <img> thumbnails beside it loaded fine.
+    remotePatterns: [{ protocol: 'https', hostname: '*.public.blob.vercel-storage.com' }],
+  },
+
   // These are read at runtime, so Next has to trace them into the serverless
   // bundle or they are missing once deployed.
   outputFileTracingIncludes: {

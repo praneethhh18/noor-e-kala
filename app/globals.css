@@ -1108,3 +1108,9 @@ form.occasion-row button{background:var(--plum);color:#fff;border:none;border-ra
 .admin-card-actions{grid-column:1 / -1;display:flex;gap:var(--s3);flex-wrap:wrap}
 .danger-button.solid{background:#b00020;color:#fff;border-color:#b00020}
 .danger-button.solid:hover{background:#8a0019}
+
+/* Confirmation after saving from the studio. Server actions give no feedback of
+   their own, so adding a product looked like nothing had happened. */
+.studio-flash{border-radius:var(--r-md);padding:var(--s4) var(--s5);font-size:var(--t-base);line-height:1.5}
+.studio-flash.ok{background:rgba(140,154,123,.18);border:1.5px solid var(--sage);color:var(--ink)}
+.studio-flash.bad{background:rgba(176,0,32,.08);border:1.5px solid rgba(176,0,32,.45);color:#8a0019}

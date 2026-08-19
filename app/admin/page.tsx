@@ -42,7 +42,12 @@ function greeting() {
   return 'Working late';
 }
 
-export default async function Admin() {
+export default async function Admin({
+  searchParams,
+}: {
+  searchParams: Promise<{ added?: string; error?: string }>;
+}) {
+  const { added, error } = await searchParams;
   // One round of parallel reads rather than seven sequential ones — matters
   // once the database is remote (Turso) instead of a local file.
   const [products, categories, orders, banner, reviews, alerts, occasions] = await Promise.all([
@@ -88,6 +93,18 @@ export default async function Admin() {
       </aside>
 
       <main className="studio-main" id="overview">
+        {added ? (
+          <p className="studio-flash ok" role="status">
+            ✓ &ldquo;{added}&rdquo; was added. It is live on the shop now — find it under Products below to add more
+            photos or change anything.
+          </p>
+        ) : null}
+        {error ? (
+          <p className="studio-flash bad" role="alert">
+            {error}
+          </p>
+        ) : null}
+
         <div className="studio-hero">
           <div>
             <p>{new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' })}</p>

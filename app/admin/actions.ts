@@ -76,8 +76,10 @@ export async function addProduct(formData: FormData) {
   const db = await requireOwner();
   const p = await productPayload(formData);
 
+  // Redirect with a message rather than throwing: an uncaught error in a server
+  // action renders a blank "server error" page with no clue what went wrong.
   if (!p.name || !p.cat || !p.img) {
-    throw new Error('Product name, category, price and an image are all required.');
+    redirect(`/admin?error=${encodeURIComponent('Add a name, a category, a price and either a photo or an image URL.')}#add`);
   }
 
   await db.execute({
@@ -105,6 +107,7 @@ export async function addProduct(formData: FormData) {
   });
 
   refresh();
+  redirect(`/admin?added=${encodeURIComponent(p.name)}#products`);
 }
 
 export async function updateProduct(formData: FormData) {
