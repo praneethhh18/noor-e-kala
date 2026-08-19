@@ -339,12 +339,14 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:var(--s4)}
 /* was a negative-margin hack; it is just a row in the flow now */
 .product-result{text-align:center;color:var(--ink-soft);font-size:var(--t-sm);margin:0 0 var(--s6)}
 
-.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(178px,100%),1fr));gap:var(--grid-gap);align-items:stretch}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(168px,100%),1fr));gap:var(--grid-gap);align-items:stretch}
 .product{background:#fff;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);cursor:pointer;
  display:flex;flex-direction:column;height:100%;
  transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
 .product:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
-.p-img{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--photo-fallback);flex:none}
+/* Square, but never taller than this: on a wide card a 1/1 image grew as tall
+   as the card was wide, which is what made the grid feel enormous. */
+.p-img{position:relative;aspect-ratio:1/1;max-height:210px;overflow:hidden;background:var(--photo-fallback);flex:none}
 .p-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
 .product:hover .p-img img{transform:scale(1.08)}
 .product.sold .p-img img{filter:grayscale(.5) opacity(.75)}
@@ -738,7 +740,7 @@ footer ul a:hover{color:var(--gold)}
    without a breakpoint for each case.
    ========================================================================== */
 .curated-cell,.shop-grid>.product{container-type:inline-size}
-@container (max-width:168px){
+@container (max-width:156px){
   .p-body{padding:var(--s3) var(--s3) var(--s4);gap:var(--s1)}
   .p-name{font-size:var(--t-base)}
   .p-price{font-size:var(--t-md)}
