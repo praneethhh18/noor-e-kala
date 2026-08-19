@@ -78,6 +78,7 @@ export function CartDrawer() {
         email: details.email,
         address: details.addr,
         customer_note: details.note,
+        website: '', // honeypot: real submissions leave this empty
         items: entries.map(([name, item]) => ({ id: name, name, price: item.price, qty: item.qty, image: item.img, custom: item.custom })),
       }),
     }).catch(() => null);
