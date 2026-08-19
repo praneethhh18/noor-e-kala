@@ -144,7 +144,7 @@ export function ProductCard({
               onClick={(event) => {
                 event.stopPropagation();
                 // effectivePrice, so a live offer is what lands in the cart.
-                add(product.name, product.effectivePrice, product.img);
+                add(product.name, product.effectivePrice, { img: product.img, slug: product.slug ?? undefined });
               }}
             >
               Add +

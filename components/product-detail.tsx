@@ -145,7 +145,7 @@ export function ProductDetail({ product, reviews }: { product: PricedProduct; re
           ) : (
             <button
               className="p-add pmodal-add"
-              onClick={() => add(product.name, product.effectivePrice, product.img, customSummary())}
+              onClick={() => add(product.name, product.effectivePrice, { img: product.img, slug: product.slug ?? undefined, custom: customSummary() })}
             >
               Add to cart
             </button>

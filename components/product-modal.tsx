@@ -199,7 +199,7 @@ export function ProductModal({
               ) : (
                 <button
                   className="p-add pmodal-add"
-                  onClick={() => add(product.name, Number(product.price), product.img)}
+                  onClick={() => add(product.name, product.effectivePrice, { img: product.img, slug: product.slug ?? undefined })}
                 >
                   Add to cart
                 </button>

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useCart } from './cart-provider';
 import { WhatsappIcon } from './icons';
-import { waLink } from '@/lib/site';
+import { SITE_URL, waLink } from '@/lib/site';
 
 const rupees = (value: number) => `₹${value}`;
 
@@ -19,10 +19,16 @@ export function CartDrawer() {
   function whatsappLink() {
     if (!count) return '#';
     const lines = entries.flatMap(([name, item]) => {
-      const line = `- ${item.qty} x ${name} (₹${item.price}) = ₹${item.qty * item.price}`;
+      const out = [`- ${item.qty} x ${name} (₹${item.price}) = ₹${item.qty * item.price}`];
+      // WhatsApp's link API carries text only — an image cannot be attached. A
+      // product link is the way the photo appears: WhatsApp unfurls it into a
+      // preview card using the page's og:image. It previews the first link in a
+      // message, so the first item is the one that shows.
+      if (item.slug) out.push(`  ${SITE_URL}/shop/${item.slug}`);
       // The personalisation is the whole point of these pieces, so it travels
       // with the order rather than being asked for afterwards.
-      return item.custom ? [line, `    ↳ ${item.custom}`] : [line];
+      if (item.custom) out.push(`  ↳ ${item.custom}`);
+      return out;
     });
     const optional = [
       details.email && `Email: ${details.email}`,

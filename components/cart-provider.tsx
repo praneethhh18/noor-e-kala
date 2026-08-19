@@ -7,8 +7,12 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 const CART_KEY = 'nek_cart';
 const DETAILS_KEY = 'nek_details';
 
-/** `custom` carries the buyer's personalisation, e.g. "Aanya & Rohan · Gold". */
-export type CartItem = { price: number; qty: number; img?: string; custom?: string };
+/**
+ * `custom` carries the buyer's personalisation, e.g. "Aanya & Rohan · Gold".
+ * `slug` lets the WhatsApp message link to the product page, which is what makes
+ * the photo appear as a preview — WhatsApp's link API cannot attach an image.
+ */
+export type CartItem = { price: number; qty: number; img?: string; custom?: string; slug?: string };
 export type CartItems = Record<string, CartItem>;
 export type Details = { name: string; phone: string; email: string; addr: string; note: string };
 
@@ -20,7 +24,7 @@ type CartContextValue = {
   open: boolean;
   count: number;
   total: number;
-  add: (name: string, price: number, img?: string, custom?: string) => void;
+  add: (name: string, price: number, extras?: { img?: string; custom?: string; slug?: string }) => void;
   setQty: (name: string, qty: number) => void;
   clear: () => void;
   setDetails: (patch: Partial<Details>) => void;
@@ -91,16 +95,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const add = useCallback(
-    (name: string, price: number, img?: string, custom?: string) => {
+    (name: string, price: number, extras?: { img?: string; custom?: string; slug?: string }) => {
       setItems((current) => {
         const existing = current[name];
         return {
           ...current,
           [name]: {
             price,
-            img: img ?? existing?.img,
+            img: extras?.img ?? existing?.img,
+            slug: extras?.slug ?? existing?.slug,
             // A newly typed personalisation replaces whatever was there before.
-            custom: custom ?? existing?.custom,
+            custom: extras?.custom ?? existing?.custom,
             qty: (existing?.qty ?? 0) + 1,
           },
         };
