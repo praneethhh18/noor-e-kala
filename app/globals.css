@@ -610,7 +610,8 @@ footer ul a:hover{color:var(--gold)}
 /* --- 1024px: desktop -> tablet landscape --- */
 @media(max-width:1024px){
   .hero-grid,.story-grid{grid-template-columns:1fr;gap:var(--s8)}
-  .collage,.story-imgs{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);max-width:520px;margin-inline:auto}
+  .collage,.story-imgs{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);
+   width:100%;max-width:520px;margin-inline:auto}
   .collage .frame,.story-imgs .a,.story-imgs .b{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:1/1;transform:none;animation:none;border-width:5px}
   .collage .f1,.story-imgs .a{grid-column:1 / -1;aspect-ratio:16/10}
   .story-imgs .b{grid-column:1 / -1;aspect-ratio:16/10}
@@ -993,7 +994,10 @@ form.occasion-row button{background:var(--plum);color:#fff;border:none;border-ra
 /* 1fr for the image, auto for the caption, so both captions sit on one line. */
 .pz-stage figure{display:grid;grid-template-rows:1fr auto;gap:var(--s2);margin:0;min-width:0}
 .pz-stage figcaption{font-size:var(--t-xs);color:var(--ink-soft);text-align:center}
-.pz-ref-img{position:relative;display:block;min-height:0;height:100%;border-radius:var(--r-md);
+/* min-height, not just height:100%: the only child is an absolutely-positioned
+   `fill` image, so on a single-column phone layout the row had nothing to size
+   from and collapsed to zero. */
+.pz-ref-img{position:relative;display:block;height:100%;min-height:160px;border-radius:var(--r-md);
  overflow:hidden;background:var(--photo-fallback)}
 .pz-ref img{object-fit:cover;opacity:.9}
 
