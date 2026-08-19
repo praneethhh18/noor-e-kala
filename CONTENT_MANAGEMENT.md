@@ -118,8 +118,15 @@ DATABASE_PATH=C:\Users\<you>\AppData\Local\noor-e-kala\store.db
 
 **Backups — use the command, do not copy the file.**
 
+Your live shop is on Turso, so a plain `npm run backup` reads the *local*
+database, not the real one. It says which it read — check for `reading LIVE
+database` before trusting a backup.
+
+To back up the live shop, pass the credentials (both are in your Vercel project
+under Settings -> Environment Variables):
+
 ```
-npm run backup
+TURSO_DATABASE_URL=libsql://... TURSO_AUTH_TOKEN=... npm run backup
 ```
 
 That writes a verified `.sql` dump to `backups/` and prints what it contains. Do
