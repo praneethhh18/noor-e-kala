@@ -1037,3 +1037,25 @@ form.occasion-row button{background:var(--plum);color:#fff;border:none;border-ra
 @media(max-width:480px){ .pz-stage{grid-template-columns:1fr} }
 
 .ci-custom{display:block;font-style:normal;font-size:var(--t-xs);color:var(--clay-deep);margin-top:2px}
+
+/* ============================================================================
+   OFFERS
+   ========================================================================== */
+.countdown{display:inline-flex;align-items:center;gap:var(--s2);margin-top:var(--s3);flex-wrap:wrap}
+.countdown b{font-size:var(--t-xs);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.countdown em{font-style:normal;font-family:"Fraunces";font-size:var(--t-md);color:var(--plum);
+ background:rgba(201,162,39,.18);border-radius:var(--r-sm);padding:.15em .5em;min-width:2.6em;text-align:center}
+
+.offer-banners{display:grid;gap:var(--s4);margin-bottom:var(--s7)}
+.offer-banner{display:flex;align-items:center;justify-content:space-between;gap:var(--s5);flex-wrap:wrap;
+ background:linear-gradient(120deg,rgba(201,162,39,.2),rgba(201,113,78,.12));
+ border:1.5px solid rgba(201,162,39,.4);border-radius:var(--r-lg);padding:var(--s6)}
+.offer-banner h2{font-size:clamp(1.5rem,3.2vw,2.2rem);margin-top:var(--s2)}
+.offer-banner p{color:var(--ink-soft);margin-top:var(--s2);max-width:52ch}
+
+.offers-summary{text-align:center;color:var(--ink-soft);font-size:var(--t-base);margin-bottom:var(--s6)}
+.offers-summary b{color:var(--plum);font-family:"Fraunces";font-size:var(--t-lg)}
+
+/* "Offers" in the nav gets a quiet accent so it reads as the deals entry. */
+.nav-links a[href="/offers"]{color:var(--clay-deep);font-weight:700}
+.nav-links a[href="/offers"]::before{content:"%";font-size:.8em;margin-right:.3em;opacity:.7}

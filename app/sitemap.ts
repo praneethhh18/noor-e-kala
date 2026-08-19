@@ -5,9 +5,11 @@ import { getProducts } from '@/lib/store';
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const pages = ['', '/shop', '/reviews', '/faq'].map((route) => ({
+  // /wishlist is deliberately absent — it is per-device and marked noindex.
+  const pages = ['', '/shop', '/offers', '/hampers', '/reviews', '/faq'].map((route) => ({
     url: `${SITE_URL}${route}`,
-    changeFrequency: 'weekly' as const,
+    // Offers change as campaigns start and stop, so crawl that one more often.
+    changeFrequency: (route === '/offers' ? 'daily' : 'weekly') as 'daily' | 'weekly',
     priority: route === '' ? 1 : 0.8,
   }));
 

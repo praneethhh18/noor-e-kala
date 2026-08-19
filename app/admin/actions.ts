@@ -27,12 +27,15 @@ function checked(formData: FormData, key: string) {
   return formData.get(key) === 'on' ? 1 : 0;
 }
 
+/**
+ * Every cached storefront route. Missing one here means the shop keeps serving
+ * a stale page after an edit — /offers was left out and showed the previous
+ * campaign's state until its 60s window expired.
+ */
+const CACHED_ROUTES = ['/', '/shop', '/offers', '/hampers', '/wishlist', '/reviews', '/admin'];
+
 function refresh() {
-  revalidatePath('/');
-  revalidatePath('/shop');
-  revalidatePath('/admin');
-  revalidatePath('/hampers');
-  revalidatePath('/wishlist');
+  for (const route of CACHED_ROUTES) revalidatePath(route);
   // The per-product pages are statically generated, so the route itself has to
   // be revalidated or approved reviews and edits never reach them.
   revalidatePath('/shop/[slug]', 'page');

@@ -36,6 +36,7 @@ export const ORDER_NOW_LINK = waLink("Hi Noor e Kala! I'd love to order");
 
 export const navLinks = [
   { href: '/shop', label: 'Shop' },
+  { href: '/offers', label: 'Offers' },
   { href: '/hampers', label: 'Hampers' },
   { href: '/reviews', label: 'Reviews' },
   { href: '/faq', label: 'FAQ' },
@@ -44,6 +45,7 @@ export const navLinks = [
 export const footerExplore = [
   { href: '/#story', label: 'Our Story' },
   { href: '/shop', label: 'Shop' },
+  { href: '/offers', label: 'Offers' },
   { href: '/#gallery', label: 'Gallery' },
   { href: '/reviews', label: 'Reviews' },
 ];

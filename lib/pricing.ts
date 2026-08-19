@@ -71,3 +71,59 @@ export function priceProduct(
 export function priceAll(products: (Product & { occasions?: string[] })[], occasions: Occasion[], on = today()) {
   return products.map((product) => priceProduct(product, occasions, on));
 }
+
+export type Offer = {
+  product: PricedProduct;
+  /** Whole-number percent off. */
+  percent: number;
+  /** Price before the discount. */
+  was: number;
+  /** Price the customer pays. */
+  now: number;
+  /** Campaign label when it comes from an occasion, else null for a standing MRP cut. */
+  campaign: string | null;
+};
+
+/**
+ * Every piece that is cheaper than its usual price right now, from either
+ * source, biggest saving first.
+ *
+ * The homepage originally showed offers only while an occasion campaign was
+ * running, which meant three permanently discounted pieces (-25%, -22%, -14%)
+ * were never surfaced anywhere. Shoppers expect a standing offers area.
+ */
+export function collectOffers(products: PricedProduct[]): Offer[] {
+  const offers: Offer[] = [];
+
+  for (const product of products) {
+    if (product.sold_out || product.enquiry) continue;
+    const price = Number(product.price);
+
+    if (product.salePrice && product.salePrice < price) {
+      offers.push({
+        product,
+        percent: Math.round((1 - product.salePrice / price) * 100),
+        was: price,
+        now: product.salePrice,
+        campaign: product.saleLabel,
+      });
+      continue; // a campaign price already beats the MRP cut
+    }
+
+    const mrp = Number(product.mrp);
+    if (mrp && mrp > price) {
+      offers.push({ product, percent: Math.round((1 - price / mrp) * 100), was: mrp, now: price, campaign: null });
+    }
+  }
+
+  return offers.sort((a, b) => b.percent - a.percent);
+}
+
+/** Milliseconds until a campaign ends, or null when it has no end date. */
+export function endsIn(occasion: Occasion, now = Date.now()) {
+  if (!occasion.ends_on) return null;
+  // ends_on is inclusive, so the offer runs to the close of that day.
+  const end = new Date(`${occasion.ends_on}T23:59:59`).getTime();
+  const remaining = end - now;
+  return remaining > 0 ? remaining : null;
+}

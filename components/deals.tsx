@@ -3,13 +3,18 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import type { Category } from '@/lib/catalog';
-import { liveOccasions, type Occasion, type PricedProduct } from '@/lib/pricing';
+import { collectOffers, liveOccasions, type Occasion, type PricedProduct } from '@/lib/pricing';
+import { Countdown } from './countdown';
 import { ProductCard } from './product-card';
 import { ProductModal } from './product-modal';
 
 /**
- * Only rendered while a discount campaign is live. Nothing here is hard-coded —
- * the owner creates occasions in the studio and this appears on its own.
+ * The offers strip on the homepage.
+ *
+ * It used to render only while an occasion campaign was running, so with no
+ * campaign live the homepage showed no offers at all — even though three pieces
+ * are permanently discounted. It now appears whenever anything is cheaper than
+ * usual, and simply changes its heading when a campaign is on.
  */
 export function Deals({
   products,
@@ -22,39 +27,39 @@ export function Deals({
 }) {
   const [active, setActive] = useState<PricedProduct | null>(null);
 
+  const offers = collectOffers(products).slice(0, 8);
+  if (!offers.length) return null;
+
   const live = liveOccasions(occasions);
-  if (!live.length) return null;
-
-  const onOffer = products
-    .filter((product) => product.salePrice && !product.sold_out)
-    .sort((a, b) => b.price - a.price - (b.salePrice ?? 0) + (a.salePrice ?? 0))
-    .slice(0, 8);
-
-  if (!onOffer.length) return null;
-
   const headline = live.find((occasion) => occasion.headline)?.headline;
-  const best = Math.max(...live.map((occasion) => occasion.discount_percent));
+  const ending = live.find((occasion) => occasion.ends_on);
+  const best = Math.max(...offers.map((offer) => offer.percent));
 
   return (
     <section className="deals" id="deals">
       <div className="wrap">
         <div className="deals-head">
           <div>
-            <span className="deals-flag">Limited time · up to {Math.round(best)}% off</span>
+            <span className="deals-flag">
+              {live.length ? 'Limited time' : 'Offers'} · up to {best}% off
+            </span>
             <h2>
-              {live.map((occasion) => `${occasion.emoji ?? ''} ${occasion.label}`.trim()).join(' · ')}
+              {live.length
+                ? live.map((occasion) => `${occasion.emoji ?? ''} ${occasion.label}`.trim()).join(' · ')
+                : 'Special offers'}
             </h2>
-            {headline ? <p>{headline}</p> : null}
+            {headline ? <p>{headline}</p> : <p>Pieces that are cheaper than usual right now.</p>}
+            {ending?.ends_on ? <Countdown endsAt={ending.ends_on} /> : null}
           </div>
-          <Link href={`/shop#occasion-${live[0].key}`} className="btn btn-ghost">
-            See everything →
+          <Link href="/offers" className="btn btn-ghost">
+            See all offers →
           </Link>
         </div>
 
         <div className="deals-rail">
-          {onOffer.map((product) => (
-            <div className="deals-cell" key={product.id}>
-              <ProductCard product={product} onOpen={setActive} />
+          {offers.map((offer) => (
+            <div className="deals-cell" key={offer.product.id}>
+              <ProductCard product={offer.product} onOpen={setActive} />
             </div>
           ))}
         </div>
