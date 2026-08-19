@@ -568,6 +568,7 @@ footer ul a:hover{color:var(--gold)}
 .panel-title h2{font-size:clamp(1.3rem,2.4vw,1.7rem)}
 .owner-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--s4);align-items:end}
 .owner-form label{display:grid;gap:var(--s2);font-size:var(--t-sm);font-weight:600;color:var(--ink-soft)}
+.owner-form label small{font-weight:500;color:var(--ink-soft);opacity:.8}
 .owner-form .wide{grid-column:1 / -1}
 .owner-form input,.owner-form select,.owner-form textarea{width:100%;padding:.7em .9em;border:1.5px solid var(--line);
  border-radius:var(--r-sm);font-family:inherit;font-size:var(--t-base);background:var(--cream);color:var(--ink)}
@@ -1103,3 +1104,7 @@ form.occasion-row button{background:var(--plum);color:#fff;border:none;border-ra
 /* "Offers" in the nav gets a quiet accent so it reads as the deals entry. */
 .nav-links a[href="/offers"]{color:var(--clay-deep);font-weight:700}
 .nav-links a[href="/offers"]::before{content:"%";font-size:.8em;margin-right:.3em;opacity:.7}
+
+.admin-card-actions{grid-column:1 / -1;display:flex;gap:var(--s3);flex-wrap:wrap}
+.danger-button.solid{background:#b00020;color:#fff;border-color:#b00020}
+.danger-button.solid:hover{background:#8a0019}

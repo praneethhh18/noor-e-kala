@@ -6,6 +6,7 @@ import {
   addProduct,
   approveReview,
   deleteProduct,
+  destroyProduct,
   deleteReview,
   markAlertNotified,
   saveOccasion,
@@ -177,7 +178,7 @@ export default async function Admin() {
               <input name="stock" type="number" min="0" placeholder="Leave blank if made to order" />
             </label>
             <label className="wide">
-              Product photos
+              Product photos <small>— pick several at once; the first becomes the main photo</small>
               <input name="photos" type="file" accept="image/*" multiple />
             </label>
             <label className="wide">
@@ -222,7 +223,13 @@ export default async function Admin() {
           <div className="product-admin-list">
             {products.length ? (
               products.map((product) => (
-                <article className="product-admin-card" key={product.id}>
+                <article
+                  className="product-admin-card"
+                  // The fields below are uncontrolled, so React would keep their old
+                  // DOM values after a save. Keying on the data remounts the form so it
+                  // shows what was actually stored.
+                  key={`${product.id}|${product.price}|${product.mrp}|${product.sort_order}|${product.is_active}|${product.sold_out}|${product.featured}|${product.new}|${product.stock}|${product.cat}`}
+                >
                   <Image src={product.img} alt="" width={120} height={120} sizes="120px" />
                   <form action={updateProduct} className="owner-form product-editor">
                     <input type="hidden" name="id" value={product.id} />
@@ -258,7 +265,7 @@ export default async function Admin() {
                       <input name="sort_order" type="number" defaultValue={product.sort_order ?? 0} />
                     </label>
                     <label className="wide">
-                      Add more photos
+                      Add more photos <small>— select several at once</small>
                       <input name="photos" type="file" accept="image/*" multiple />
                     </label>
                     <label className="wide">
@@ -297,10 +304,18 @@ export default async function Admin() {
                     </div>
                     <button>Save changes</button>
                   </form>
-                  <form action={deleteProduct}>
-                    <input type="hidden" name="id" value={product.id} />
-                    <button className="danger-button">Hide product</button>
-                  </form>
+                  <div className="admin-card-actions">
+                    <form action={deleteProduct}>
+                      <input type="hidden" name="id" value={product.id} />
+                      <button className="danger-button">Hide from shop</button>
+                    </form>
+                    {product.is_active === false ? (
+                      <form action={destroyProduct}>
+                        <input type="hidden" name="id" value={product.id} />
+                        <button className="danger-button solid">Delete permanently</button>
+                      </form>
+                    ) : null}
+                  </div>
                 </article>
               ))
             ) : (

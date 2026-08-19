@@ -149,6 +149,27 @@ export async function deleteProduct(formData: FormData) {
   refresh();
 }
 
+/**
+ * Removes a product for good. Only offered once it is already hidden, so it
+ * takes two deliberate steps — "Hide from shop" keeps it out of the storefront
+ * while preserving it, this erases it. Past orders keep their own copy of the
+ * item details, so they are unaffected.
+ */
+export async function destroyProduct(formData: FormData) {
+  const db = await requireOwner();
+  const id = text(formData, 'id');
+  await db.batch(
+    [
+      { sql: 'DELETE FROM product_occasions WHERE product_id = ?', args: [id] },
+      { sql: 'DELETE FROM reviews WHERE product_id = ?', args: [id] },
+      { sql: 'DELETE FROM stock_alerts WHERE product_id = ?', args: [id] },
+      { sql: 'DELETE FROM products WHERE id = ? AND is_active = 0', args: [id] },
+    ],
+    'write',
+  );
+  refresh();
+}
+
 export async function addCategory(formData: FormData) {
   const db = await requireOwner();
   const label = text(formData, 'label');

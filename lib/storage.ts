@@ -32,6 +32,15 @@ export async function saveImage(file: File): Promise<string> {
     return blob.url;
   }
 
+  // A serverless filesystem is read-only, so writing here throws an unhelpful
+  // 500. Say what is actually wrong and what fixes it.
+  if (process.env.VERCEL) {
+    throw new Error(
+      'Photo uploads need a Vercel Blob store. Add one under Storage in the Vercel project, ' +
+        'then redeploy. Until then you can paste an image URL in the "Image URL" field instead.',
+    );
+  }
+
   await mkdir(UPLOAD_DIR, { recursive: true });
   await writeFile(path.join(UPLOAD_DIR, name), Buffer.from(await file.arrayBuffer()));
   return `/uploads/${name}`;
