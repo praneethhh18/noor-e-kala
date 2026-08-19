@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import type { Product } from '@/lib/catalog';
 import type { PricedProduct } from '@/lib/pricing';
 import { useCart } from './cart-provider';
@@ -30,6 +31,22 @@ export function ProductCard({
 }) {
   const { add, items, setQty } = useCart();
   const { has, toggle } = useWishlist();
+  const router = useRouter();
+
+  /**
+   * On a phone, open the product page rather than the quick-view popup.
+   *
+   * The popup has to fit a photo, price, description and buy button into a
+   * short screen, which left it cramped and clipped. The full page has room for
+   * all of it plus personalisation, reviews and related pieces — and it is what
+   * a shopper expects from a tap. The popup stays on desktop, where hovering
+   * through a grid without losing your place is genuinely useful.
+   */
+  function openProduct() {
+    const onPhone = typeof window !== 'undefined' && window.matchMedia('(max-width: 760px)').matches;
+    if (onPhone && product.slug) router.push(`/shop/${product.slug}`);
+    else onOpen(product);
+  }
   // The cart is keyed by product name, so the card can show what is already in it.
   const inCart = items[product.name]?.qty ?? 0;
   const saved = has(product.id);
@@ -54,7 +71,7 @@ export function ProductCard({
   // change, and the reveal safety-net only runs once on mount, so a freshly
   // rendered card would stay stuck at opacity:0.
   return (
-    <article className={`product${sold ? ' sold' : ''}`} onClick={() => onOpen(product)}>
+    <article className={`product${sold ? ' sold' : ''}`} onClick={openProduct}>
       <div className="p-img">
         {corner}
         <button

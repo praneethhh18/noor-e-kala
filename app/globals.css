@@ -625,6 +625,14 @@ footer ul a:hover{color:var(--gold)}
      short window filled 69% of the popup and pushed "Add to cart" off-screen. */
   .pmodal-stage{max-height:38vh}
   .pmodal-thumb{width:48px;height:48px}
+  /* Same reason as the popup: a square photo on a short screen filled the
+     viewport and pushed the price and buy button below the fold. 38vh plus the
+     tighter gaps below keeps "Add to cart" on the first screen even on a short
+     621px-tall window, where it previously landed 26px past the fold. */
+  .pdp-stage{max-height:38vh}
+  .pdp-grid{gap:var(--s4)}
+  .pdp-info{gap:var(--s2)}
+  .crumbs{margin-bottom:var(--s2)}
   .admin-order-card{grid-template-columns:1fr;gap:var(--s4)}
   .studio{grid-template-columns:1fr}
   .studio-side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;border-right:none;border-bottom:1px solid rgba(59,44,38,.1)}
