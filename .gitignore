@@ -1,9 +1,41 @@
-# dev-only files (not part of the website)
+# dependencies
 node_modules/
-package.json
-package-lock.json
+
+# next.js build output
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# local env files (admin password + session secret live here, never in git)
+.env
+.env.local
+.env*.local
+
+# local SQLite database and its WAL sidecar files
+data/*.db
+data/*.db-wal
+data/*.db-shm
+
+# database backups (npm run backup)
+backups/
+
+# owner-uploaded product photos
+public/uploads/
+
+# dev-only files (not part of the website)
 serve.py
 test.mjs
 *.mjs
 deploy/
+next-dev-*.log
+
+# os
 .DS_Store
+Thumbs.db
+
+# dev-only screenshot/layout check helpers
+.shot.mjs
+.check.mjs
+
+.vercel
