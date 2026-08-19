@@ -2,12 +2,19 @@
 
 ## The address to use
 
-**https://noor-e-kala.vercel.app**
+**https://noor-e-kala.in**
 
-Bookmark that one. Every deploy also mints a throwaway URL like
-`noor-e-kala-7tecbp2hb-…vercel.app` which is frozen at that build forever —
-useful for checking an old version, useless for looking at the current site.
-Share and open the short address above; it always points at the newest deploy.
+That is the live shop. `www.noor-e-kala.in` redirects to it, and the old
+`noor-e-kala.vercel.app` still works so nothing you shared before is broken.
+
+Every deploy also mints a throwaway URL like `noor-e-kala-7tecbp2hb-…vercel.app`
+which is frozen at that build forever — useful for checking an old version,
+useless for looking at the current site.
+
+The domain is registered with GoDaddy and points at Vercel with two DNS records:
+an `A` record on `@` to `76.76.21.21`, and a `CNAME` on `www` to
+`cname.vercel-dns.com`. Renew the domain before it expires — if it lapses the
+shop goes offline.
 
 The site runs on **Vercel** (the web app) plus **Turso** (the database) plus
 **Vercel Blob** (uploaded product photos). All three have free tiers that are
