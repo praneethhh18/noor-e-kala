@@ -61,7 +61,9 @@ export function PersonalisePanel({
         ) : (
           <>
             <figure className="pz-ref">
-              <Image src={image} alt="" fill sizes="(max-width:480px) 90vw, 200px" style={{ objectFit: 'cover' }} />
+              <span className="pz-ref-img">
+                <Image src={image} alt="" fill sizes="(max-width:480px) 90vw, 200px" style={{ objectFit: 'cover' }} />
+              </span>
               <figcaption>The piece</figcaption>
             </figure>
             <figure className="pz-card">

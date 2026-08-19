@@ -773,6 +773,10 @@ footer ul a:hover{color:var(--gold)}
 .pdp-gallery{display:flex;flex-direction:column;gap:var(--s3);position:sticky;top:calc(var(--header-h) + var(--s4))}
 .pdp-stage{position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--photo-fallback);
  aspect-ratio:1/1;box-shadow:var(--shadow-sm)}
+/* Must be positioned and sized: the image inside uses next/image `fill`, which
+   is position:absolute and would otherwise size itself against the viewport. */
+.pdp-stage{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:var(--r-lg);
+ background:var(--photo-fallback);box-shadow:var(--shadow-sm)}
 .pdp-stage img{width:100%;height:100%;object-fit:cover}
 
 .pdp-info{display:flex;flex-direction:column;gap:var(--s4);align-items:flex-start}
@@ -989,8 +993,9 @@ form.occasion-row button{background:var(--plum);color:#fff;border:none;border-ra
 /* 1fr for the image, auto for the caption, so both captions sit on one line. */
 .pz-stage figure{display:grid;grid-template-rows:1fr auto;gap:var(--s2);margin:0;min-width:0}
 .pz-stage figcaption{font-size:var(--t-xs);color:var(--ink-soft);text-align:center}
-.pz-ref img{width:100%;height:100%;min-height:0;object-fit:cover;border-radius:var(--r-md);
- background:var(--photo-fallback);opacity:.9}
+.pz-ref-img{position:relative;display:block;min-height:0;height:100%;border-radius:var(--r-md);
+ overflow:hidden;background:var(--photo-fallback)}
+.pz-ref img{object-fit:cover;opacity:.9}
 
 /* A material-ish card so the lettering reads as a finish, not flat text. */
 .pz-card-face{
