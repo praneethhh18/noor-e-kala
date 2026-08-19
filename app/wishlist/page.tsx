@@ -20,7 +20,7 @@ export default async function Wishlist() {
         <div className="wrap">
           <div className="shead">
             <span className="script">kept for later</span>
-            <h2>Your saved pieces</h2>
+            <h1>Your saved pieces</h1>
             <p>Saved on this device — no account needed.</p>
           </div>
           <WishlistView products={products} categories={categories} />

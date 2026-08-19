@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -109,7 +110,7 @@ export default async function ProductPage({ params }: Params) {
               <div className="related-grid">
                 {related.map((item) => (
                   <Link className="related-card" href={`/shop/${item.slug}`} key={item.id}>
-                    <img src={item.img} alt={item.name} loading="lazy" />
+                    <Image src={item.img} alt={item.name} width={132} height={132} sizes="132px" />
                     <span className="related-name">{item.name}</span>
                     <span className="related-price">₹{item.price}</span>
                   </Link>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { InstagramIcon } from './icons';
 import { INSTAGRAM, footerExplore, waLink } from '@/lib/site';
@@ -9,7 +10,7 @@ export function SiteFooter() {
         <div className="foot-grid">
           <div>
             <div className="brand">
-              <img className="mark" src="/logo.jpg" alt="Noor e Kala logo" /> Noor e Kala
+              <Image className="mark" src="/logo.jpg" alt="Noor e Kala logo" width={46} height={46} sizes="46px" /> Noor e Kala
             </div>
             <p>
               Handcrafted crochet, resin art, fashion jewellery, bouquets &amp; gifts. Little pieces of art, made with

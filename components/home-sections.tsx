@@ -1,6 +1,10 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { InstagramIcon } from './icons';
-import { INSTAGRAM, collections, testimonials, values } from '@/lib/site';
+import { INSTAGRAM, testimonials } from '@/lib/site';
+import type { Review } from '@/lib/store';
+
+const AVATAR_COLOURS = ['var(--clay)', 'var(--gold)', 'var(--plum)', 'var(--sage)'];
 
 const heroWords = ['Little', 'pieces', 'of'];
 const heroWords2 = ['made', 'just', 'for', 'you.'];
@@ -68,13 +72,13 @@ export function Hero() {
 
         <div className="collage">
           <div className="frame f1">
-            <img src="/img/clock-green.jpg" alt="Resin geode wall clock" />
+            <Image src="/img/clock-green.jpg" alt="Resin geode wall clock" fill sizes="(max-width:1024px) 60vw, 30vw" priority style={{ objectFit: 'cover' }} />
           </div>
           <div className="frame f2">
-            <img src="/img/resin-earrings.jpg" alt="Resin heart earrings" />
+            <Image src="/img/resin-earrings.jpg" alt="Resin heart earrings" fill sizes="(max-width:1024px) 50vw, 22vw" style={{ objectFit: 'cover' }} />
           </div>
           <div className="frame f3">
-            <img src="/img/resin-jewel-set.jpg" alt="Resin jewellery set" />
+            <Image src="/img/resin-jewel-set.jpg" alt="Resin jewellery set" fill sizes="(max-width:1024px) 50vw, 22vw" style={{ objectFit: 'cover' }} />
           </div>
           <div className="sticker">
             made
@@ -88,18 +92,6 @@ export function Hero() {
   );
 }
 
-export function Marquee() {
-  const words = ['Crochet', 'Resin Art', 'Fashion Jewellery', 'Bouquets', 'Gift Hampers', 'Keepsakes'];
-  return (
-    <div className="marquee">
-      <div className="marquee-track">
-        {[...words, ...words].map((word, i) => (
-          <span key={`${word}-${i}`}>{word}</span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export function Story() {
   return (
@@ -107,10 +99,10 @@ export function Story() {
       <div className="wrap story-grid">
         <div className="story-imgs reveal">
           <div className="a">
-            <img loading="lazy" src="/img/coasters.jpg" alt="Resin floral coasters" />
+            <Image src="/img/coasters.jpg" alt="Resin floral coasters" fill sizes="(max-width:1024px) 60vw, 34vw" style={{ objectFit: 'cover' }} />
           </div>
           <div className="b">
-            <img loading="lazy" src="/img/name-tray.jpg" alt="Personalised resin tray" />
+            <Image src="/img/name-tray.jpg" alt="Personalised resin tray" fill sizes="(max-width:1024px) 50vw, 26vw" style={{ objectFit: 'cover' }} />
           </div>
         </div>
         <div className="reveal d1">
@@ -140,72 +132,7 @@ export function Story() {
   );
 }
 
-export function Collections() {
-  return (
-    <section className="collections" id="collections">
-      <div className="wrap">
-        <div className="shead reveal">
-          <span className="script">what I make</span>
-          <h2>The Collections</h2>
-          <p>Five little worlds of craft. Pick the one calling your name, or mix &amp; match for the perfect gift.</p>
-        </div>
-        <div className="coll-grid">
-          {collections.map((item, index) => (
-            <Link
-              href={`/shop#${item.key}`}
-              className={`card ${item.span} reveal ${index === 1 || index === 3 ? 'd1' : ''}`.replace(/\s+/g, ' ').trim()}
-              key={item.key}
-            >
-              <div className="ph">
-                <span className="price">{item.price}</span>
-                <img loading="lazy" src={item.img} alt={item.alt} />
-              </div>
-              <div className="body">
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </div>
-            </Link>
-          ))}
-          <Link href="/#order" className="card reveal d2 card-custom">
-            <div className="ph">
-              <span className="custom-badge" aria-hidden="true">
-                ✦
-              </span>
-              <span className="price">made to order</span>
-              <img loading="lazy" src="/img/wedding-keepsake.jpg" alt="Personalised keepsake" />
-            </div>
-            <div className="body">
-              <h3>Custom &amp; Personalised</h3>
-              <p>Names, photos, varmala preservation, hampers — tell me your idea and I&apos;ll make it just for you.</p>
-            </div>
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
 
-export function Values() {
-  return (
-    <section className="values">
-      <div className="wrap">
-        <div className="shead reveal">
-          <span className="script">why people fall in love</span>
-          <h2>Made the slow, lovely way</h2>
-        </div>
-        <div className="val-grid">
-          {values.map((value, index) => (
-            <div className={`val reveal ${index ? `d${index}` : ''}`.trim()} key={value.title}>
-              <div className="ic">{value.icon}</div>
-              <h3>{value.title}</h3>
-              <p>{value.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export function Wave({ flip = false }: { flip?: boolean }) {
   return (
@@ -224,14 +151,36 @@ export function Wave({ flip = false }: { flip?: boolean }) {
   );
 }
 
-export function Testimonials({ limit }: { limit?: number }) {
-  const shown = limit ? testimonials.slice(0, limit) : testimonials;
+/**
+ * Shows real approved reviews when there are any, and falls back to the
+ * Instagram quotes otherwise. Before this, genuine reviews only ever appeared
+ * on product pages while the homepage kept showing the same seven hardcoded
+ * quotes — so nothing a customer wrote could ever reach the front page.
+ */
+export function Testimonials({ limit, reviews = [] }: { limit?: number; reviews?: Review[] }) {
+  const fromDatabase = reviews.map((review) => ({
+    text: review.text,
+    name: review.name,
+    meta: review.product_name ? `${review.product_name} · verified order` : 'verified order',
+    initial: review.name.trim().charAt(0).toUpperCase() || '♡',
+    colour: AVATAR_COLOURS[review.id % AVATAR_COLOURS.length],
+    rating: review.rating,
+  }));
+
+  const pool = fromDatabase.length ? fromDatabase : testimonials.map((t) => ({ ...t, rating: 5 }));
+  const shown = limit ? pool.slice(0, limit) : pool;
 
   return (
     <div className="t-grid">
       {shown.map((quote, index) => (
         <div className={`quote reveal ${index % 3 ? `d${index % 3}` : ''}`.trim()} key={`${quote.name}-${index}`}>
-          <div className="stars">★★★★★</div>
+          <div className="stars" aria-label={`${quote.rating} out of 5`}>
+            {'★★★★★'.split('').map((star, i) => (
+              <span key={i} className={i < quote.rating ? '' : 'dim'}>
+                {star}
+              </span>
+            ))}
+          </div>
           <p>&ldquo;{quote.text}&rdquo;</p>
           <div className="who">
             <span className="av" style={{ background: quote.colour }}>

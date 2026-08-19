@@ -22,7 +22,7 @@ export default async function Hampers() {
         <div className="wrap">
           <div className="shead">
             <span className="script">put it together</span>
-            <h2>Build a gift hamper</h2>
+            <h1>Build a gift hamper</h1>
             <p>
               Pick any {HAMPER_MIN} pieces or more and {Math.round(HAMPER_DISCOUNT * 100)}% comes off the total. I&apos;ll
               wrap them together beautifully.

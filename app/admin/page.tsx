@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { logout } from '../login/actions';
 import {
@@ -222,7 +223,7 @@ export default async function Admin() {
             {products.length ? (
               products.map((product) => (
                 <article className="product-admin-card" key={product.id}>
-                  <img src={product.img} alt="" />
+                  <Image src={product.img} alt="" width={120} height={120} sizes="120px" />
                   <form action={updateProduct} className="owner-form product-editor">
                     <input type="hidden" name="id" value={product.id} />
                     <input type="hidden" name="existing_img" value={product.img ?? ''} />
@@ -458,7 +459,7 @@ export default async function Admin() {
               .map((product) => (
                 <form action={setProductOccasions} className="tag-row" key={product.id}>
                   <input type="hidden" name="id" value={product.id} />
-                  <img src={product.img} alt="" />
+                  <Image src={product.img} alt="" width={120} height={120} sizes="120px" />
                   <div>
                     <strong>{product.name}</strong>
                     <div className="toggle-row">

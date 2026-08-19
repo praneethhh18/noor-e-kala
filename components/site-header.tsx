@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useCart } from './cart-provider';
@@ -16,7 +17,7 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
     <header id="hdr" className={transparent ? '' : 'hdr-solid'}>
       <nav className="wrap">
         <Link href="/" className="brand">
-          <img className="mark" src="/logo.jpg" alt="Noor e Kala logo" /> Noor e Kala
+          <Image className="mark" src="/logo.jpg" alt="Noor e Kala logo" width={46} height={46} sizes="46px" priority /> Noor e Kala
         </Link>
         <div className="nav-right">
           <div className={`nav-links ${menuOpen ? 'open' : ''}`}>

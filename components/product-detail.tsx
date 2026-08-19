@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import type { PricedProduct, Review } from '@/lib/store';
 import { useCart } from './cart-provider';
@@ -54,7 +55,7 @@ export function ProductDetail({ product, reviews }: { product: PricedProduct; re
       <div className="pdp-grid">
         <div className="pdp-gallery">
           <div className="pdp-stage">
-            <img src={images[index]} alt={product.name} />
+            <Image src={images[index]} alt={product.name} fill priority sizes="(max-width:1024px) 92vw, 46vw" style={{ objectFit: 'cover' }} />
             {onSale ? <span className="p-sale">{product.saleLabel}</span> : off ? <span className="p-off">-{off}%</span> : null}
             {sold ? <span className="sold-badge">Sold out</span> : null}
           </div>

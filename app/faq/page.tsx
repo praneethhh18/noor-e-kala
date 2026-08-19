@@ -20,7 +20,7 @@ export default async function Faq() {
         <div className="wrap">
           <div className="shead reveal">
             <span className="script">simple &amp; sweet</span>
-            <h2>How ordering works</h2>
+            <h1>How ordering works</h1>
             <p>Ordering a handmade piece is easy and personal, here&apos;s exactly how it goes.</p>
           </div>
 

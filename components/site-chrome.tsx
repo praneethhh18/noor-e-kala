@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 // Everything the old app.js did to the page shell: scroll progress, the cursor
@@ -82,7 +83,7 @@ export function SiteChrome({ preloader = false }: { preloader?: boolean }) {
       <div className="cursor-glow" id="glow" />
       {preloader ? (
         <div id="pre" className={preDone ? 'done' : ''}>
-          <img className="pre-mark" src="/logo.jpg" alt="Noor e Kala" />
+          <Image className="pre-mark" src="/logo.jpg" alt="Noor e Kala" width={200} height={200} sizes="200px" priority />
           <div className="pre-txt">Handmade with love</div>
         </div>
       ) : null}

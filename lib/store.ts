@@ -261,3 +261,16 @@ export async function getStorefrontData() {
   ]);
   return { products, categories, occasions, banner };
 }
+
+/** Approved reviews across all products, newest first — for the homepage. */
+export async function getApprovedReviews(limit = 6): Promise<Review[]> {
+  const db = await getDb();
+  const { rows } = await db.execute({
+    sql: `SELECT r.*, p.name AS product_name FROM reviews r
+          LEFT JOIN products p ON p.id = r.product_id
+          WHERE r.status = 'approved'
+          ORDER BY r.created_at DESC, r.id DESC LIMIT ?`,
+    args: [limit],
+  });
+  return rows.map(toReview);
+}

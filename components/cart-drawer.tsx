@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { useCart } from './cart-provider';
 import { WhatsappIcon } from './icons';
@@ -94,7 +95,7 @@ export function CartDrawer() {
           {count ? (
             entries.map(([name, item]) => (
               <div className="ci" key={name}>
-                {item.img ? <img className="ci-img" src={item.img} alt="" /> : null}
+                {item.img ? <Image className="ci-img" src={item.img} alt="" width={52} height={52} sizes="52px" /> : null}
                 <div className="ci-info">
                   <b>{name}</b>
                   <span>{rupees(item.price)} each</span>

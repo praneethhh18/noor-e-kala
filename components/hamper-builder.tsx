@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import type { Category, Product } from '@/lib/catalog';
 import { HAMPER_DISCOUNT, HAMPER_MIN, waLink } from '@/lib/site';
@@ -73,7 +74,7 @@ export function HamperBuilder({ products, categories }: { products: Product[]; c
                 onClick={() => toggle(product.id)}
               >
                 <span className="hamper-thumb">
-                  <img src={product.img} alt="" loading="lazy" />
+                  <Image src={product.img} alt="" fill sizes="(max-width:760px) 33vw, 150px" style={{ objectFit: 'cover' }} />
                   <span className="hamper-tick">{on ? '✓' : '+'}</span>
                 </span>
                 <span className="hamper-name">{product.name}</span>

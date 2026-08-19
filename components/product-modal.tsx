@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import type { Category } from '@/lib/catalog';
@@ -123,7 +124,7 @@ export function ProductModal({
                 ‹
               </button>
             ) : null}
-            <img className="pmodal-main" src={images[index]} alt={product.name} />
+            <Image className="pmodal-main" src={images[index]} alt={product.name} fill sizes="(max-width:1024px) 90vw, 45vw" style={{ objectFit: 'cover' }} />
             {images.length > 1 ? (
               <button className="pmodal-nav next" aria-label="Next image" onClick={() => step(1)}>
                 ›
@@ -281,7 +282,7 @@ export function ProductModal({
             <div className="recent-rail">
               {related.map((item) => (
                 <button className="recent-item" key={item.id} onClick={() => onOpen?.(item)}>
-                  <img src={item.img} alt="" loading="lazy" />
+                  <Image src={item.img} alt="" width={132} height={132} sizes="132px" />
                   <span>{item.name}</span>
                 </button>
               ))}

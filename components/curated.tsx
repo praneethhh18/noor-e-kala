@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import type { Category } from '@/lib/catalog';
@@ -109,7 +110,7 @@ export function Curated({
             <div className="recent-rail">
               {recent.map((product) => (
                 <button className="recent-item" key={product.id} onClick={() => open(product)}>
-                  <img src={product.img} alt="" loading="lazy" />
+                  <Image src={product.img} alt="" width={132} height={132} sizes="132px" />
                   <span>{product.name}</span>
                 </button>
               ))}

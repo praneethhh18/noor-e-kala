@@ -106,7 +106,7 @@ export function ShopBrowser({
       <div className="wrap">
         <div className="shead reveal">
           <span className="script">the full collection</span>
-          <h2>Shop Everything</h2>
+          <h1>Shop Everything</h1>
           <p>
             Add what you love to your cart, then send it straight to me on WhatsApp. I&apos;ll confirm availability and
             sort out payment with you personally.

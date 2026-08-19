@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import type { Personalise } from '@/lib/personalise';
 
 const STYLE_FONT: Record<Personalise['style'], string> = {
@@ -44,7 +45,7 @@ export function PersonalisePanel({
       <div className={`pz-stage${overlay ? ' pz-stage-overlay' : ''}`}>
         {overlay ? (
           <div className="pz-overlay-wrap">
-            <img src={overlay} alt="" />
+            <Image src={overlay} alt="" fill sizes="(max-width:1024px) 90vw, 420px" style={{ objectFit: 'cover' }} />
             <span
               className={`pz-word pz-${config.style}${isPlaceholder ? ' pz-ghost' : ''}`}
               style={{
@@ -60,7 +61,7 @@ export function PersonalisePanel({
         ) : (
           <>
             <figure className="pz-ref">
-              <img src={image} alt="" />
+              <Image src={image} alt="" fill sizes="(max-width:480px) 90vw, 200px" style={{ objectFit: 'cover' }} />
               <figcaption>The piece</figcaption>
             </figure>
             <figure className="pz-card">

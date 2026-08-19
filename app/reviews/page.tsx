@@ -4,7 +4,7 @@ import { Testimonials, Wave } from '@/components/home-sections';
 import { ReelsGrid } from '@/components/reels-grid';
 import { StoreShell } from '@/components/store-shell';
 import { INSTAGRAM, waLink } from '@/lib/site';
-import { getBanner } from '@/lib/store';
+import { getApprovedReviews, getBanner } from '@/lib/store';
 
 export const revalidate = 60;
 
@@ -18,7 +18,7 @@ const reviewCta = waLink(
 );
 
 export default async function Reviews() {
-  const banner = await getBanner();
+  const [banner, reviews] = await Promise.all([getBanner(), getApprovedReviews(24)]);
 
   return (
     <StoreShell banner={banner}>
@@ -26,10 +26,10 @@ export default async function Reviews() {
         <div className="wrap">
           <div className="shead reveal">
             <span className="script">love notes</span>
-            <h2>Kind words from lovely people</h2>
+            <h1>Kind words from lovely people</h1>
             <p>Real messages from happy customers on Instagram. 💛</p>
           </div>
-          <Testimonials />
+          <Testimonials reviews={reviews} />
           <div className="reveal" style={{ textAlign: 'center', marginTop: '2.8rem' }}>
             <p style={{ color: 'var(--cream-2)', marginBottom: '1rem' }}>
               Got something from me? I&apos;d love to hear your thoughts 💛

@@ -5,7 +5,7 @@ import { Deals } from '@/components/deals';
 import { CustomOrderForm } from '@/components/custom-order-form';
 import { Hero, Story, Testimonials, Wave } from '@/components/home-sections';
 import { StoreShell } from '@/components/store-shell';
-import { getStorefrontData } from '@/lib/store';
+import { getApprovedReviews, getStorefrontData } from '@/lib/store';
 
 export const revalidate = 60;
 
@@ -22,7 +22,10 @@ export const metadata: Metadata = {
  * gallery and values blocks live on their own pages instead.
  */
 export default async function Home() {
-  const { products, categories, occasions, banner } = await getStorefrontData();
+  const [{ products, categories, occasions, banner }, reviews] = await Promise.all([
+    getStorefrontData(),
+    getApprovedReviews(6),
+  ]);
 
   return (
     <StoreShell banner={banner} variant="home">
@@ -39,7 +42,7 @@ export default async function Home() {
             <span className="script">love notes</span>
             <h2>Kind words from lovely people</h2>
           </div>
-          <Testimonials limit={3} />
+          <Testimonials limit={3} reviews={reviews} />
           <p className="reveal" style={{ textAlign: 'center', marginTop: 'var(--s7)' }}>
             <Link href="/reviews" className="btn btn-primary">
               Read all reviews &amp; watch reels →
