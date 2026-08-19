@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { StoreShell } from '@/components/store-shell';
 import { faqs, howItWorks } from '@/lib/site';
 import { getBanner } from '@/lib/store';
+import { JsonLd, faqSchema } from '@/lib/seo';
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'How it works & FAQ — Noor e Kala',
+  title: 'How to Order Handmade Gifts Online — Delivery, Payment & Resin Care | Noor e Kala',
   description: 'How ordering works at Noor e Kala, plus answers about delivery, payment, customisation and resin care.',
 };
 
@@ -16,6 +17,7 @@ export default async function Faq() {
 
   return (
     <StoreShell banner={banner}>
+      <JsonLd data={faqSchema} />
       <section className="howto" style={{ paddingTop: '150px' }}>
         <div className="wrap">
           <div className="shead reveal">

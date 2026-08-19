@@ -6,13 +6,20 @@ import { CustomOrderForm } from '@/components/custom-order-form';
 import { Hero, Story, Testimonials, Wave } from '@/components/home-sections';
 import { StoreShell } from '@/components/store-shell';
 import { getApprovedReviews, getStorefrontData } from '@/lib/store';
+import { JsonLd, organisationSchema, websiteSchema } from '@/lib/seo';
 
 export const revalidate = 60;
 
+// Titles lead with what people search for, not the brand — nobody is looking
+// for "Noor e Kala" yet, they are looking for resin art and handmade gifts.
 export const metadata: Metadata = {
-  title: 'Noor e Kala, handmade with love',
+  title: 'Noor e Kala — Handmade Resin Art, Crochet & Personalised Gifts | India',
   description:
-    'Noor e Kala. Handcrafted crochet, resin art, fashion jewellery, bouquets & gifts. Each piece made by hand, made with heart.',
+    'Handmade resin art, crochet bouquets, fashion jewellery and personalised keepsakes — including varmala and flower preservation. Made to order in India, sent on WhatsApp.',
+  keywords: [
+    'resin art India', 'varmala preservation', 'personalised gifts India',
+    'handmade crochet bouquet', 'resin photo frame', 'fingerprint pendant',
+  ],
 };
 
 /**
@@ -29,6 +36,8 @@ export default async function Home() {
 
   return (
     <StoreShell banner={banner} variant="home">
+      <JsonLd data={organisationSchema} />
+      <JsonLd data={websiteSchema} />
       <Hero />
       {/* Renders itself only while a discount campaign is running. */}
       <Deals products={products} categories={categories} occasions={occasions} />

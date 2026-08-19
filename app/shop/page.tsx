@@ -6,9 +6,9 @@ import { getStorefrontData } from '@/lib/store';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Shop — Noor e Kala',
+  title: 'Buy Handmade Resin Art, Jewellery & Gifts Online | Noor e Kala',
   description:
-    'Shop handcrafted resin art, jewellery, crochet, bouquets & gifts from Noor e Kala. Add to cart and order on WhatsApp.',
+    'Shop handmade resin art, crochet bouquets, fashion jewellery and personalised gifts. Every piece made by hand in India — order on WhatsApp, pan-India delivery.',
 };
 
 export default async function Shop() {

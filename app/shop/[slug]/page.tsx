@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { ProductDetail } from '@/components/product-detail';
 import { StoreShell } from '@/components/store-shell';
 import { getBanner, getCategories, getProductBySlug, getProducts, getReviews } from '@/lib/store';
+import { JsonLd, breadcrumbSchema } from '@/lib/seo';
 
 export const revalidate = 60;
 
@@ -93,6 +94,14 @@ export default async function ProductPage({ params }: Params) {
   return (
     <StoreShell banner={banner}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {/* Shows the Shop > Category > Product trail under the search result. */}
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Shop', url: '/shop' },
+          ...(category ? [{ name: category.label, url: `/shop#${category.key}` }] : []),
+          { name: product.name, url: `/shop/${product.slug}` },
+        ])}
+      />
 
       <section className="pdp">
         <div className="wrap">
